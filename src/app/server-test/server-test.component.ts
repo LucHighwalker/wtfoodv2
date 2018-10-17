@@ -11,10 +11,14 @@ export class ServerTestComponent implements OnInit {
   constructor(private wtf: WtfoodService) { }
 
   ngOnInit() {
-    this.wtf.thefuck();
     this.wtf.testing.subscribe((resp) => {
       console.log(resp);
     });
+    this.wtf.thefuck();
+    this.wtf.signupMsg.subscribe((resp) => {
+      console.log(resp);
+    });
+    this.wtf.signup();
   }
 
 }
