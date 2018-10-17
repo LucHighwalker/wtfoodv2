@@ -6,25 +6,34 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class WtfoodService {
-  public testing = new Subject<string>();
   public signupMsg = new Subject<{}>();
+  public loginMsg = new Subject<{}>();
 
   constructor(private http: HttpClient) {}
 
-  thefuck() {
-    this.http.get<{bro: string}>('http://localhost:4040/api/wtf/get').subscribe((json) => {
-      this.testing.next(json.bro);
-    });
+  // auth
+
+  signup(body) {
+    this.http
+      .post<{ signup: string; token: any; error: any }>(
+        'http://localhost:4040/api/auth/signup',
+        body
+      )
+      .subscribe(resp => {
+        this.signupMsg.next(resp);
+      });
   }
 
-  signup() {
-    console.log('shit');
-    this.http.post<{signup: string, token: any, error: any}>('http://localhost:4040/api/auth/signup', {
-      email: 'afsfwdfsdf@gmail.com',
-      password: 'test'
-    }, ).subscribe((resp) => {
-      console.log('got response');
-      this.signupMsg.next(resp);
-    });
+  login(body) {
+    this.http
+      .post<{ signup: string; token: any; error: any }>(
+        'http://localhost:4040/api/auth/login',
+        body
+      )
+      .subscribe(resp => {
+        this.signupMsg.next(resp);
+      });
   }
+
+  // crud
 }

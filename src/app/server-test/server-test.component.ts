@@ -4,21 +4,25 @@ import { WtfoodService } from '../services/wtfood.service';
 @Component({
   selector: 'wtf-server-test',
   templateUrl: './server-test.component.html',
-  styleUrls: ['./server-test.component.css']
+  styleUrls: ['./server-test.component.scss']
 })
 export class ServerTestComponent implements OnInit {
-
-  constructor(private wtf: WtfoodService) { }
+  constructor(private wtf: WtfoodService) {}
 
   ngOnInit() {
-    this.wtf.testing.subscribe((resp) => {
+    this.wtf.signupMsg.subscribe(resp => {
       console.log(resp);
     });
-    this.wtf.thefuck();
-    this.wtf.signupMsg.subscribe((resp) => {
+    this.wtf.signup({
+      email: 'afsfwdfsdf@gmail.com',
+      password: 'test'
+    });
+    this.wtf.loginMsg.subscribe(resp => {
       console.log(resp);
     });
-    this.wtf.signup();
+    this.wtf.login({
+      email: 'afsfwdfsdf@gmail.com',
+      password: 'test'
+    });
   }
-
 }

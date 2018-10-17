@@ -5,11 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { WtfoodService } from './services/wtfood.service';
 import { ServerTestComponent } from './server-test/server-test.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ServerTestComponent
+    ServerTestComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
