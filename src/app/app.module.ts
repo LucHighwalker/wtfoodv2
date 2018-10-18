@@ -45,21 +45,21 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { AppComponent } from './app.component';
 import { WtfoodService } from './services/wtfood.service';
-import { ServerTestComponent } from './server-test/server-test.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './user/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { MenuEditorComponent } from './menu-editor/menu-editor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ServerTestComponent,
     LoginComponent,
     HomeComponent,
     DashboardComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    MenuEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -110,6 +110,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
       {
         path: 'dashboard',
         component: DashboardComponent
+      },
+      {
+        path: 'editmenu',
+        component: MenuEditorComponent
       },
       {
         path: '**',

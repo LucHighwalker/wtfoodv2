@@ -1,0 +1,13 @@
+<button (click)="saveMenu()">save menu</button>
+
+<h2>{{menu.menuName}}</h2>
+<button (click)="addCategory()">add category</button>
+
+<div *ngFor="let category of menu.categories">
+  <h3>{{category.name}}</h3>
+  <button (click)="addItem(category)">add item</button>
+  <div *ngFor="let item of category.items">
+    <h4>{{item.name}}</h4>
+    <p>{{item.desc}}</p>
+  </div>
+</div>

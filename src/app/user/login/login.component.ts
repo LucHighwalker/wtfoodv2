@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { WtfoodService } from '../../services/wtfood.service';
 import { CookieService } from 'ngx-cookie-service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'wtf-login',
@@ -18,16 +18,16 @@ export class LoginComponent implements OnInit {
   private curToken: string;
   private curUser: {};
 
-  constructor(private wtf: WtfoodService, private cookie: CookieService) {}
+  constructor(private user: UserService, private cookie: CookieService) {}
 
   ngOnInit() {
-    this.wtf.loginMsg.subscribe((msg: { login: string; token: string }) => {
+    this.user.loginMsg.subscribe((msg: { login: string; token: string }) => {
       this.createToken(msg.token);
     });
-    this.wtf.signupMsg.subscribe((msg: { signup: string; token: string }) => {
+    this.user.signupMsg.subscribe((msg: { signup: string; token: string }) => {
       this.createToken(msg.token);
     });
-    this.wtf.userUpdate.subscribe((user: { user: {}, token: string }) => {
+    this.user.userUpdate.subscribe((user: { user: {}, token: string }) => {
       if (user.user !== null) {
         this.curUser = user;
         this.loggedIn = true;
@@ -37,18 +37,18 @@ export class LoginComponent implements OnInit {
       }
     });
     this.curToken = this.cookie.get('wtf-user-token');
-    this.wtf.getUser(this.curToken);
+    this.user.updateUser(this.curToken);
   }
 
   login() {
-    this.wtf.login({
+    this.user.login({
       email: this.email,
       password: this.password
     });
   }
 
   signup() {
-    this.wtf.signup({
+    this.user.signup({
       email: this.email,
       password: this.password
     });
@@ -61,12 +61,12 @@ export class LoginComponent implements OnInit {
   createToken(token) {
     this.cookie.set('wtf-user-token', token, 99999);
     this.curToken = token;
-    this.wtf.getUser(token);
+    this.user.updateUser(token);
   }
 
   logout() {
     this.cookie.delete('wtf-user-token');
     this.loggedIn = false;
-    this.wtf.getUser('');
+    this.user.updateUser('');
   }
 }
