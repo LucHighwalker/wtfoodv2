@@ -46,12 +46,14 @@ import { WtfoodService } from './services/wtfood.service';
 import { ServerTestComponent } from './server-test/server-test.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './user/login/login.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ServerTestComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -97,7 +99,7 @@ import { LoginComponent } from './user/login/login.component';
     RouterModule.forRoot([
       {
         path: '',
-        component: LoginComponent
+        component: HomeComponent
       }
     ])
   ],

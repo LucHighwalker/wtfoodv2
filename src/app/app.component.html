@@ -1,6 +1,10 @@
-<mat-sidenav-container class="example-container">
+<div class="wtf-titlebar">
+  <img src="assets/images/burger.png" (click)="sidenav.toggle()" class="menu-toggle animate">
+  <img src="assets/images/WTFoodLogoSmall.png" class="title-logo">
+</div>
+
+<mat-sidenav-container class="wtf-container">
   <mat-sidenav #sidenav [mode]="mode.value">
-    <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
     <p>
       <mat-radio-group class="example-radio-group" [formControl]="mode">
         <label>Mode:</label>
@@ -9,10 +13,10 @@
         <mat-radio-button value="push">Push</mat-radio-button>
       </mat-radio-group>
     </p>
+    <wtf-login></wtf-login>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <button mat-button (click)="sidenav.toggle()">Toggle</button>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
