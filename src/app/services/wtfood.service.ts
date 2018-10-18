@@ -9,6 +9,8 @@ export class WtfoodService {
   public signupMsg = new Subject<{}>();
   public loginMsg = new Subject<{}>();
 
+  public userUpdate = new Subject<{}>();
+
   constructor(private http: HttpClient) {}
 
   // auth
@@ -32,6 +34,19 @@ export class WtfoodService {
       )
       .subscribe(resp => {
         this.signupMsg.next(resp);
+      });
+  }
+
+  getUser(token) {
+    this.http
+      .post<{ signup: string; token: any; error: any }>(
+        'http://localhost:4040/api/auth/getuser',
+        {
+          token
+        }
+      )
+      .subscribe(resp => {
+        this.userUpdate.next(resp);
       });
   }
 

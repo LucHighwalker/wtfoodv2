@@ -41,19 +41,25 @@ import {
   MatTreeModule
 } from '@angular/material';
 
+import { CookieService } from 'ngx-cookie-service';
+
 import { AppComponent } from './app.component';
 import { WtfoodService } from './services/wtfood.service';
 import { ServerTestComponent } from './server-test/server-test.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './user/login/login.component';
 import { HomeComponent } from './home/home.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ServerTestComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    DashboardComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -100,10 +106,21 @@ import { HomeComponent } from './home/home.component';
       {
         path: '',
         component: HomeComponent
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent
+      },
+      {
+        path: '**',
+        component: NotFoundComponent
       }
     ])
   ],
-  providers: [WtfoodService],
+  providers: [
+    WtfoodService,
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
