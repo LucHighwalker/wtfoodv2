@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WtfoodService } from '../services/wtfood.service';
 
 @Component({
   selector: 'wtf-menu-editor',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuEditorComponent implements OnInit {
   public menu: any = {
+    createdBy: {},
     menuName: 'New Menu',
     categories: [
       {
@@ -46,7 +48,7 @@ export class MenuEditorComponent implements OnInit {
     ]
   };
 
-  constructor() { }
+  constructor(private wtf: WtfoodService) { }
 
   ngOnInit() {
     console.log(this.menu);
@@ -73,7 +75,7 @@ export class MenuEditorComponent implements OnInit {
   }
 
   saveMenu() {
-    // save
+    this.wtf.saveMenu(this.menu);
   }
 
 }

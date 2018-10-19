@@ -15,7 +15,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  getUser(): {} {
+  getUser(): any {
     return this.curUser ? this.curUser : null;
   }
 
