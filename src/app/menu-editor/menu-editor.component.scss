@@ -1,0 +1,59 @@
+.wtf-panel {
+  position: fixed;
+  z-index: 10;
+  top: 150px;
+  left: -75px;
+  vertical-align: center;
+  height: 250px;
+  transform: scale(0.75, 0.75);
+
+  .hint {
+    position: absolute;
+    transform: rotate(-90deg);
+    opacity: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 250px;
+    height: 50px;
+    text-align: center;
+    vertical-align: center;
+  }
+
+  .buttons {
+    height: 50px;
+    margin-top: calc(50% - 50px);
+    opacity: 0;
+
+    li {
+      margin: 5px;
+    }
+  }
+}
+
+.wtf-panel:hover {
+  left: 0;
+  transform: scale(1, 1);
+
+  .hint {
+    opacity: 0;
+  }
+
+  .buttons {
+    opacity: 1;
+  }
+}
+
+.row {
+  margin-bottom: 20px;
+}
+.row .row {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+[class*="col-"] {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}

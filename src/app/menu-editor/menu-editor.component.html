@@ -1,13 +1,40 @@
-<button (click)="saveMenu()">save menu</button>
+<div class="container">
+  <div class="dndPlaceholder col-md-12" #placeholder></div>
 
-<h2>{{menu.menuName}}</h2>
-<button (click)="addCategory()">add category</button>
+  <div class="row">
+    <div class="col-md-3">
 
-<div *ngFor="let category of menu.categories">
-  <h3>{{category.name}}</h3>
-  <button (click)="addItem(category)">add item</button>
-  <div *ngFor="let item of category.items">
-    <h4>{{item.name}}</h4>
-    <p>{{item.desc}}</p>
+      <div class="wtf-panel animate">
+        <div class="panel-body">
+          <div class="hint animate">
+            <h2>Add items</h2>
+          </div>
+          <div class="buttons animate">
+            <li *ngFor="let template of nestedList.templates" type="button" [dndType]="template.type" [dndDraggable]="{effectAllowed:'copy'}"
+              [dndObject]="template" (dndCopied)="template.id = template.id + 1" class="btn btn-default btn-lg col-md-12">
+              {{template.type}}
+            </li>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+      <div class="row">
+        <div *ngFor="let dropzone of nestedList.dropzones" class="col-md-6">
+          <div class="dropzone box box-yellow">
+            <div [dndList]="{
+                    allowedTypes: ['item','category']}" [dndModel]="dropzone"
+              [dndPlaceholder]="placeholder" class="col-md-12">
+              <div *ngFor="let item of dropzone">
+                <wtf-editor-category *ngIf="item.type === 'category'" [list]="dropzone" [model]="item"></wtf-editor-category>
+                <div *ngIf="item.type === 'item'" [dndType]="item.type" [dndDraggable] (dndMoved)="removeItem(item, dropzone)"
+                  [dndObject]="item" class="col-md-12">{{item.type}} {{item.id}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
