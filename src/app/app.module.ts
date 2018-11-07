@@ -54,6 +54,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MenuEditorComponent } from './menu-editor/menu-editor.component';
 import { EditorCategoryComponent } from './menu-editor/editor-category/editor-category.component';
+import { EditorItemComponent } from './menu-editor/editor-item/editor-item.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { EditorCategoryComponent } from './menu-editor/editor-category/editor-ca
     DashboardComponent,
     NotFoundComponent,
     MenuEditorComponent,
-    EditorCategoryComponent
+    EditorCategoryComponent,
+    EditorItemComponent
   ],
   imports: [
     BrowserModule,

@@ -23,8 +23,9 @@
   }
 
   .buttons {
-    height: 50px;
-    margin-top: calc(50% - 50px);
+    height: 100%;
+    margin-top: 10px;
+    margin-left: 25px;
     opacity: 0;
 
     li {
@@ -53,7 +54,7 @@
   margin-top: 10px;
   margin-bottom: 0;
 }
-[class*="col-"] {
+[class*='col-'] {
   padding-top: 15px;
   padding-bottom: 15px;
 }

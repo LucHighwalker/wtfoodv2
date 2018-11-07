@@ -11,7 +11,7 @@ export class UserService {
 
   public userUpdate = new Subject<{}>();
 
-  public curUser: {};
+  private curUser: {};
 
   constructor(private http: HttpClient) {}
 

@@ -11,8 +11,11 @@
           </div>
           <div class="buttons animate">
             <li *ngFor="let template of nestedList.templates" type="button" [dndType]="template.type" [dndDraggable]="{effectAllowed:'copy'}"
-              [dndObject]="template" (dndCopied)="template.id = template.id + 1" class="btn btn-default btn-lg col-md-12">
+              [dndObject]="template" (dndCopied)="template.id = template.id + 1" class="btn btn-default btn-lg col-md-8">
               {{template.type}}
+            </li>
+            <li type="button" class="btn btn-default btn-lg col-md-8" (click)="addColumn()">
+              Add column
             </li>
           </div>
         </div>
