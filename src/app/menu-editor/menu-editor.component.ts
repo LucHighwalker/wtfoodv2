@@ -1,34 +1,57 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { WtfoodService } from '../services/wtfood.service';
 
 @Component({
   selector: 'wtf-menu-editor',
   templateUrl: './menu-editor.component.html',
-  styleUrls: ['./menu-editor.component.scss']
+  styleUrls: ['./menu-editor.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MenuEditorComponent implements OnInit {
-  public nestedList = {
-    selected: null,
-    templates: [
-      { type: 'category', id: 1, columns: [[], []] },
-      { type: 'item', id: 2 }
-    ],
-    dropzones: [
-      []
-    ]
-  };
+  sourceBuilderTools = [
+    {
+      name: 'Section',
+      children: [] as any[],
+      inputType: 'section',
+      icon: 'far fa-square',
+      class: 'wide'
+    },
+    {
+      name: 'String',
+      inputType: 'string',
+      icon: 'fas fa-language',
+      class: 'half'
+    },
+    {
+      name: 'Number',
+      inputType: 'number',
+      icon: 'fas fa-hashtag',
+      class: 'half'
+    }
+  ];
+  targetBuilderTools: any[] = [];
 
-  constructor(private wtf: WtfoodService) {}
+  constructor() {}
 
-  ngOnInit() {
-    // console.log(this.menu);
+  ngOnInit() {}
+
+  droppableItemClass = (item: any) => `${item.class} ${item.inputType}`;
+
+  builderDrag(e: any) {
+    const item = e.value;
+    item.data =
+      item.inputType === 'number'
+        ? (Math.random() * 100) | 0
+        : Math.random()
+            .toString(36)
+            .substring(20);
   }
 
-  public removeItem(item: any, list: any[]): void {
-    list.splice(list.indexOf(item), 1);
+  log(e: any) {
+    console.log(e.type, e);
   }
 
-  public addColumn(): void {
-    this.nestedList.dropzones.push([]);
+  canMove(e: any): boolean {
+    return e.indexOf('Disabled') === -1;
   }
 }

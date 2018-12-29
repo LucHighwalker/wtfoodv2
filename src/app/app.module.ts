@@ -41,7 +41,7 @@ import {
   MatTreeModule
 } from '@angular/material';
 
-import { DndListModule } from 'ngx-drag-and-drop-lists';
+import { NgxDnDModule } from '@swimlane/ngx-dnd';
 
 import { CookieService } from 'ngx-cookie-service';
 
@@ -53,8 +53,6 @@ import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MenuEditorComponent } from './menu-editor/menu-editor.component';
-import { EditorCategoryComponent } from './menu-editor/editor-category/editor-category.component';
-import { EditorItemComponent } from './menu-editor/editor-item/editor-item.component';
 
 @NgModule({
   declarations: [
@@ -63,11 +61,10 @@ import { EditorItemComponent } from './menu-editor/editor-item/editor-item.compo
     HomeComponent,
     DashboardComponent,
     NotFoundComponent,
-    MenuEditorComponent,
-    EditorCategoryComponent,
-    EditorItemComponent
+    MenuEditorComponent
   ],
   imports: [
+    NgxDnDModule,
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -108,7 +105,6 @@ import { EditorItemComponent } from './menu-editor/editor-item/editor-item.compo
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    DndListModule,
     RouterModule.forRoot([
       {
         path: '',
