@@ -1,11 +1,11 @@
 wtf-menu-editor {
-  .builder-container {
+  .wtf-container {
     display: flex;
 
-    .builder-source, .builder-target {
-      flex: 1 1 50%;
+    .wtf-target {
+      flex: 1 1 100%;
       box-sizing: border-box;
-      max-width: 50%;
+      max-width: 100%;
     }
   }
 
@@ -13,14 +13,14 @@ wtf-menu-editor {
     font-size: 16px;
   }
 
-  .builder-source .ngx-dnd-container {
+  .wtf-selector .ngx-dnd-container {
     border: none;
     background-color: lightgrey;
     border-radius: 5px;
     padding: 5px;
   }
 
-  .builder-target {
+  .wtf-target {
     .ngx-input {
       margin: 0;
       .ngx-input-wrap {
@@ -64,7 +64,6 @@ wtf-menu-editor {
           box-sizing: border-box;
           -webkit-box-flex: 1;
           max-width: 48%;
-          max-height: 60px;
           padding: 0 5px 5px 5px;
         }
 

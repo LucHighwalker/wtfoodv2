@@ -53,6 +53,7 @@ import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MenuEditorComponent } from './menu-editor/menu-editor.component';
+import { MenuItemComponent } from './menu-item/menu-item.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { MenuEditorComponent } from './menu-editor/menu-editor.component';
     HomeComponent,
     DashboardComponent,
     NotFoundComponent,
-    MenuEditorComponent
+    MenuEditorComponent,
+    MenuItemComponent
   ],
   imports: [
     NgxDnDModule,

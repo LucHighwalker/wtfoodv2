@@ -1,5 +1,5 @@
-<div class="builder-container">
-  <div class="builder-source">
+<div class="wtf-container">
+  <div class="wtf-selector">
     <h4>Source</h4>
 
     <ngx-dnd-container
@@ -8,21 +8,19 @@
       [dropZones]="['builder-target']"
       [copy]="true"
       [droppableItemClass]="droppableItemClass"
-      (drag)="builderDrag($event)">
-
+      (drag)="builderDrag($event)"
+    >
       <ng-template let-item="model">
-        <i [class]="item.icon"></i>
-        {{item.name}}
+        <i [class]="item.icon"></i> {{ item.name }}
       </ng-template>
     </ngx-dnd-container>
-
   </div>
-  <div class="builder-target">
+  <div class="wtf-target">
     <h4>Target</h4>
 
     <ngx-dnd-container
       class="root-container"
-      [model]="targetBuilderTools"
+      [model]="menu"
       dropZone="builder-target"
       [removeOnSpill]="true"
       [droppableItemClass]="droppableItemClass"
@@ -30,13 +28,13 @@
       (drop)="log($event)"
       (over)="log($event)"
       (out)="log($event)"
-      (remove)="log($event)">
-
+      (remove)="log($event)"
+    >
       <ng-template let-model="model" let-template="template">
         <div [ngSwitch]="model.inputType">
           <div *ngSwitchCase="'section'">
             <div class="shadow">
-              {{model.name}}
+              {{ model.name }}
               <ngx-dnd-container
                 dropZone="builder-target"
                 [model]="model.children"
@@ -48,16 +46,20 @@
                 (over)="log($event)"
                 (out)="log($event)"
                 (remove)="log($event)"
-                (cancel)="log($event)">
+                (cancel)="log($event)"
+              >
               </ngx-dnd-container>
             </div>
           </div>
           <div *ngSwitchDefault>
-            <label>{{model.name}}</label>
-            <input [attr.type]="model.inputType" [ngModel]="model.data">
+            <label>name</label>
+            <input [attr.type]="'string'" [ngModel]="model.name" />
+            <input [attr.type]="'currency'" [ngModel]="model.price" />
           </div>
         </div>
       </ng-template>
     </ngx-dnd-container>
   </div>
 </div>
+
+<span (click)="saveMenu()">save</span>
