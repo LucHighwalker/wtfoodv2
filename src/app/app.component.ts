@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -8,5 +8,19 @@ import { FormControl } from '@angular/forms';
 })
 export class AppComponent {
   public title = 'wtFood';
-  public mode = new FormControl('over');
+  public mode = new FormControl('side');
+
+  constructor () {
+    this.onResize();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    const screenWidth = window.innerWidth;
+    if (screenWidth < 920) {
+      this.mode = new FormControl('over');
+    } else {
+      this.mode = new FormControl('side');
+    }
+  }
 }

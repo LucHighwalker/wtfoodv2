@@ -5,15 +5,7 @@
 
 <mat-sidenav-container class="wtf-container">
   <mat-sidenav #sidenav [mode]="mode.value">
-    <p>
-      <mat-radio-group class="example-radio-group" [formControl]="mode">
-        <label>Mode:</label>
-        <mat-radio-button value="over">Over</mat-radio-button>
-        <mat-radio-button value="side">Side</mat-radio-button>
-        <mat-radio-button value="push">Push</mat-radio-button>
-      </mat-radio-group>
-    </p>
-    <wtf-login></wtf-login>
+    <wtf-navbar></wtf-navbar>
   </mat-sidenav>
 
   <mat-sidenav-content>

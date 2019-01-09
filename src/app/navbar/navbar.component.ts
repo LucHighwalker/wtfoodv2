@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../services/user.service';
 
 @Component({
-  selector: 'wtf-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'wtf-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class NavbarComponent implements OnInit {
   public email: string;
   public password: string;
   public confPassword: string;

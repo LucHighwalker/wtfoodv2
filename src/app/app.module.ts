@@ -48,22 +48,20 @@ import { CookieService } from 'ngx-cookie-service';
 import { AppComponent } from './app.component';
 import { WtfoodService } from './services/wtfood.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './user/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MenuEditorComponent } from './menu-editor/menu-editor.component';
-import { MenuItemComponent } from './menu-item/menu-item.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     HomeComponent,
     DashboardComponent,
     NotFoundComponent,
     MenuEditorComponent,
-    MenuItemComponent
+    NavbarComponent
   ],
   imports: [
     NgxDnDModule,
