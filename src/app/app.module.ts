@@ -115,7 +115,11 @@ import { NavbarComponent } from './navbar/navbar.component';
         component: DashboardComponent
       },
       {
-        path: 'editmenu',
+        path: 'new',
+        component: MenuEditorComponent
+      },
+      {
+        path: 'edit/:menuId',
         component: MenuEditorComponent
       },
       {

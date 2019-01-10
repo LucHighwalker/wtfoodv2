@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { WtfoodService } from '../services/wtfood.service';
 
 @Component({
@@ -24,11 +25,29 @@ export class MenuEditorComponent implements OnInit {
       class: 'half'
     }
   ];
-  menu: any[] = [];
 
-  constructor(private wtf: WtfoodService) {}
+  menu = {
+    menuName: 'New Menu',
+    body: []
+  };
 
-  ngOnInit() {}
+  constructor(
+    private activeRoute: ActivatedRoute,
+    private wtf: WtfoodService
+  ) {}
+
+  ngOnInit() {
+    this.activeRoute.params.subscribe(params => {
+      const menuId = params['menuId'];
+      if (menuId !== undefined) {
+        this.wtf.getMenu(menuId);
+      }
+    });
+
+    this.wtf.menuResponse.subscribe((resp: any) => {
+      this.menu = resp.menu;
+    });
+  }
 
   droppableItemClass = (item: any) => `${item.class} ${item.inputType}`;
 
