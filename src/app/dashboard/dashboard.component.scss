@@ -1,0 +1,46 @@
+.menu-box {
+  height: 50px;
+  border-style: solid;
+  border-color: teal;
+  background-color: white;
+  border-width: 1px;
+  margin: 10px;
+  padding: 2px;
+
+  .edit-stamp {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 1px;
+    margin-right: 2px;
+    color: grey;
+    font-size: xx-small;
+  }
+}
+
+.menu-box.placeholder {
+  border-style: dashed;
+  background-color: #eeeeee;
+  cursor: pointer;
+
+  .add {
+    display: inline-block;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    border-style: dashed;
+    border-width: 1px;
+    border-color: teal;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    font-size: larger;
+    line-height: 23px;
+    color: teal;
+  }
+}
