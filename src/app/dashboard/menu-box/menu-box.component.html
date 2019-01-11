@@ -23,6 +23,7 @@
               matInput
               placeholder="Choose dates"
               [satDatepicker]="picker"
+              [value]="menu.dates"
               (dateChange)="test($event)"
             />
             <sat-datepicker #picker [rangeMode]="true"> </sat-datepicker>

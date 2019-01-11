@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { WtfoodService } from 'src/app/services/wtfood.service';
 
 @Component({
   selector: 'wtf-menu-box',
@@ -12,13 +13,12 @@ export class MenuBoxComponent implements OnInit {
   @Input()
   type: string;
 
-  public date: any;
-
-  constructor() {}
+  constructor(private wtf: WtfoodService) {}
 
   ngOnInit() {}
 
-  test(e: any) {
-    console.log(e.value);
+  test(dates: any) {
+    this.menu.dates = dates.value;
+    this.wtf.saveMenu(this.menu);
   }
 }
