@@ -40,8 +40,19 @@
 
   <ul *ngIf="loggedIn">
     <li>
-      <a [routerLink]="['/dashboard']" routerLinkActive="router-link-active"
-        >dashboard</a
+      <a
+        [routerLink]="['/dashboard']"
+        [queryParams]="{ page: 'menus' }"
+        routerLinkActive="router-link-active"
+        >menus</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="['/dashboard']"
+        [queryParams]="{ page: 'dates' }"
+        routerLinkActive="router-link-active"
+        >dates</a
       >
     </li>
   </ul>

@@ -56,6 +56,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MenuViewerComponent } from './menu-viewer/menu-viewer.component';
 import { CategoryComponent } from './menu-viewer/category/category.component';
 import { ItemComponent } from './menu-viewer/item/item.component';
+import { MenuBoxComponent } from './dashboard/menu-box/menu-box.component';
+import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,8 @@ import { ItemComponent } from './menu-viewer/item/item.component';
     NavbarComponent,
     MenuViewerComponent,
     CategoryComponent,
-    ItemComponent
+    ItemComponent,
+    MenuBoxComponent
   ],
   imports: [
     NgxDnDModule,
@@ -111,6 +114,8 @@ import { ItemComponent } from './menu-viewer/item/item.component';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    SatDatepickerModule,
+    SatNativeDateModule,
     RouterModule.forRoot([
       {
         path: '',
