@@ -1,65 +1,74 @@
-<div class="wtf-container">
-  <div class="wtf-selector">
-    <h4>Source</h4>
+<div class="wtf-editor">
+  <input
+    type="string"
+    class="menu-name"
+    name="menuName"
+    [(ngModel)]="menu.menuName"
+  />
+  <div class="wtf-container">
+    <br />
+    <div class="wtf-selector">
+      <h4>Source</h4>
 
-    <ngx-dnd-container
-      class="root-container"
-      [model]="sourceBuilderTools"
-      [dropZones]="['builder-target']"
-      [copy]="true"
-      [droppableItemClass]="droppableItemClass"
-      (drag)="builderDrag($event)"
-    >
-      <ng-template let-item="model">
-        <i [class]="item.icon"></i> {{ item.name }}
-      </ng-template>
-    </ngx-dnd-container>
-  </div>
-  <div class="wtf-target">
-    <h4>Target</h4>
+      <ngx-dnd-container
+        class="root-container"
+        [model]="sourceBuilderTools"
+        [dropZones]="['builder-target']"
+        [copy]="true"
+        [droppableItemClass]="droppableItemClass"
+        (drag)="builderDrag($event)"
+      >
+        <ng-template let-item="model">
+          <i [class]="item.icon"></i> {{ item.name }}
+        </ng-template>
+      </ngx-dnd-container>
+    </div>
+    <div class="wtf-target">
+      <h4>Target</h4>
 
-    <ngx-dnd-container
-      class="root-container"
-      [model]="menu.body"
-      dropZone="builder-target"
-      [removeOnSpill]="true"
-      [droppableItemClass]="droppableItemClass"
-      (drag)="log($event)"
-      (drop)="log($event)"
-      (over)="log($event)"
-      (out)="log($event)"
-      (remove)="log($event)"
-    >
-      <ng-template let-model="model" let-template="template">
-        <div [ngSwitch]="model.inputType">
-          <div *ngSwitchCase="'section'">
-            <div class="shadow">
-              {{ model.name }}
-              <ngx-dnd-container
-                dropZone="builder-target"
-                [model]="model.children"
-                [removeOnSpill]="true"
-                [template]="template"
-                [droppableItemClass]="droppableItemClass"
-                (drag)="log($event)"
-                (drop)="log($event)"
-                (over)="log($event)"
-                (out)="log($event)"
-                (remove)="log($event)"
-                (cancel)="log($event)"
-              >
-              </ngx-dnd-container>
+      <ngx-dnd-container
+        class="root-container"
+        [model]="menu.body"
+        dropZone="builder-target"
+        [removeOnSpill]="true"
+        [droppableItemClass]="droppableItemClass"
+        (drag)="log($event)"
+        (drop)="log($event)"
+        (over)="log($event)"
+        (out)="log($event)"
+        (remove)="log($event)"
+      >
+        <ng-template let-model="model" let-template="template">
+          <div [ngSwitch]="model.inputType">
+            <div *ngSwitchCase="'section'">
+              <div class="shadow">
+                {{ model.name }}
+                <ngx-dnd-container
+                  dropZone="builder-target"
+                  [model]="model.children"
+                  [removeOnSpill]="true"
+                  [template]="template"
+                  [droppableItemClass]="droppableItemClass"
+                  (drag)="log($event)"
+                  (drop)="log($event)"
+                  (over)="log($event)"
+                  (out)="log($event)"
+                  (remove)="log($event)"
+                  (cancel)="log($event)"
+                >
+                </ngx-dnd-container>
+              </div>
+            </div>
+            <div *ngSwitchDefault>
+              <label>name</label>
+              <input [attr.type]="'string'" [(ngModel)]="model.name" />
+              <input [attr.type]="'currency'" [(ngModel)]="model.price" />
             </div>
           </div>
-          <div *ngSwitchDefault>
-            <label>name</label>
-            <input [attr.type]="'string'" [ngModel]="model.name" />
-            <input [attr.type]="'currency'" [ngModel]="model.price" />
-          </div>
-        </div>
-      </ng-template>
-    </ngx-dnd-container>
+        </ng-template>
+      </ngx-dnd-container>
+    </div>
   </div>
-</div>
 
-<span (click)="saveMenu()">save</span>
+  <span (click)="saveMenu()">save</span>
+</div>

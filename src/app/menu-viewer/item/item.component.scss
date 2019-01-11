@@ -1,0 +1,33 @@
+.item {
+  display: block;
+  margin: 5px 1%;
+  border: 1px solid transparent;
+
+  flex: 1 1 48%;
+  -webkit-box-flex: 1;
+  max-width: 48%;
+  padding: 0 5px 5px 5px;
+
+  .header {
+    height: 40px;
+    width: 100%;
+
+    .name {
+      position: relative;
+      display: inline-block;
+      line-height: 0px;
+    }
+
+    .price {
+      position: relative;
+      width: 100%;
+      display: block;
+      top: -20px;
+      text-align: right;
+    }
+  }
+
+  .desc {
+    white-space: normal;
+  }
+}

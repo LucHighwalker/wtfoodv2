@@ -37,15 +37,15 @@ export class MenuEditorComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.wtf.menuResponse.subscribe((resp: any) => {
+      this.menu = resp.menu;
+    });
+
     this.activeRoute.params.subscribe(params => {
       const menuId = params['menuId'];
       if (menuId !== undefined) {
         this.wtf.getMenu(menuId);
       }
-    });
-
-    this.wtf.menuResponse.subscribe((resp: any) => {
-      this.menu = resp.menu;
     });
   }
 

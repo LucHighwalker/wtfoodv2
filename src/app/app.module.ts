@@ -53,6 +53,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MenuEditorComponent } from './menu-editor/menu-editor.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { MenuViewerComponent } from './menu-viewer/menu-viewer.component';
+import { CategoryComponent } from './menu-viewer/category/category.component';
+import { ItemComponent } from './menu-viewer/item/item.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +64,10 @@ import { NavbarComponent } from './navbar/navbar.component';
     DashboardComponent,
     NotFoundComponent,
     MenuEditorComponent,
-    NavbarComponent
+    NavbarComponent,
+    MenuViewerComponent,
+    CategoryComponent,
+    ItemComponent
   ],
   imports: [
     NgxDnDModule,
@@ -117,6 +123,10 @@ import { NavbarComponent } from './navbar/navbar.component';
       {
         path: 'new',
         component: MenuEditorComponent
+      },
+      {
+        path: 'view/:menuId',
+        component: MenuViewerComponent
       },
       {
         path: 'edit/:menuId',

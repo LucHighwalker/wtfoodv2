@@ -1,0 +1,15 @@
+<div class="menu" *ngIf="menu !== undefined">
+  <h1>{{ menu.menuName }}</h1>
+  <br />
+  <div class="wtf-container">
+    <div *ngFor="let element of menu.body">
+      <div [ngSwitch]="element.inputType">
+        <wtf-category
+          *ngSwitchCase="'section'"
+          [category]="element"
+        ></wtf-category>
+        <wtf-item *ngSwitchDefault [item]="element"></wtf-item>
+      </div>
+    </div>
+  </div>
+</div>
