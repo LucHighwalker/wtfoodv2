@@ -24,7 +24,7 @@
               placeholder="Choose dates"
               [satDatepicker]="picker"
               [value]="menu.dates"
-              (dateChange)="test($event)"
+              (dateChange)="dateChanged($event)"
             />
             <sat-datepicker #picker [rangeMode]="true"> </sat-datepicker>
             <sat-datepicker-toggle

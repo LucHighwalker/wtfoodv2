@@ -17,7 +17,7 @@ export class MenuBoxComponent implements OnInit {
 
   ngOnInit() {}
 
-  test(dates: any) {
+  dateChanged(dates: any = null) {
     this.menu.dates = dates.value;
     this.wtf.saveMenu(this.menu);
   }
