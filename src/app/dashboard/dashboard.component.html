@@ -43,8 +43,9 @@
       <span *ngFor="let permission of permObj.permissions">{{permission.email}}</span>
     </div>
 
+    <input type="text" [(ngModel)]="permEmail" id="perm-email" placeholder="enter email">
 
-    <span>add</span>
+    <span (click)="addPermission()">add</span>
     <span>remove</span>
     <span (click)="closePermissions()">close</span>
   </div>

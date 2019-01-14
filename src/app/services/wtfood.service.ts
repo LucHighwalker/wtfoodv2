@@ -26,6 +26,18 @@ export class WtfoodService {
     });
   }
 
+  addPermission(email, menuId) {
+    const token = this.user.getUser().token;
+    const url = 'http://localhost:4040/api/wtf/addperm/' + menuId;
+    this.http.post(url, {
+      token,
+      email
+    })
+    .subscribe(resp => {
+      console.log(resp);
+    });
+  }
+
   saveMenu(menu) {
     const token = this.user.getUser().token;
     this.http

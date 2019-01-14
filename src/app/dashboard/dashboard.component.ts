@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
   page = 'menus';
 
   permObj: any = null;
+  permEmail = '';
 
   constructor(
     private wtf: WtfoodService,
@@ -39,6 +40,8 @@ export class DashboardComponent implements OnInit {
       const page = params['page'];
       if (page !== undefined) {
         this.page = page;
+        this.permObj = null;
+        this.permEmail = null;
       }
     });
   }
@@ -49,5 +52,9 @@ export class DashboardComponent implements OnInit {
 
   closePermissions() {
     this.permObj = null;
+  }
+
+  addPermission() {
+    this.wtf.addPermission(this.permEmail, this.permObj._id);
   }
 }
