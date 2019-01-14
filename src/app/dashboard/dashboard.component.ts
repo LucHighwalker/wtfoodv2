@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { CookieService } from 'ngx-cookie-service';
 import { ActivatedRoute } from '@angular/router';
+import { WtfoodService } from '../services/wtfood.service';
 
 @Component({
   selector: 'wtf-dashboard',
@@ -14,7 +15,10 @@ export class DashboardComponent implements OnInit {
 
   page = 'menus';
 
+  permObj: any = null;
+
   constructor(
+    private wtf: WtfoodService,
     private user: UserService,
     private activeRoute: ActivatedRoute,
     private cookie: CookieService
@@ -27,11 +31,23 @@ export class DashboardComponent implements OnInit {
     this.curToken = this.cookie.get('wtf-user-token');
     this.user.updateUser(this.curToken);
 
+    this.wtf.permissionResponse.subscribe(resp => {
+      this.permObj = resp.permObj ? resp.permObj : null;
+    });
+
     this.activeRoute.queryParams.subscribe(params => {
       const page = params['page'];
       if (page !== undefined) {
         this.page = page;
       }
     });
+  }
+
+  viewPermissions(menuId: string) {
+    this.wtf.getPermissions(menuId);
+  }
+
+  closePermissions() {
+    this.permObj = null;
   }
 }

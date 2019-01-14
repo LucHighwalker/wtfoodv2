@@ -7,8 +7,8 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class WtfoodService {
-
   public menuResponse = new Subject<{}>();
+  public permissionResponse = new Subject<any>();
 
   constructor(private http: HttpClient, private user: UserService) {}
 
@@ -19,13 +19,22 @@ export class WtfoodService {
     });
   }
 
+  getPermissions(menuId) {
+    const url = 'http://localhost:4040/api/wtf/getperm/' + menuId;
+    this.http.get(url).subscribe(resp => {
+      this.permissionResponse.next(resp);
+    });
+  }
+
   saveMenu(menu) {
     const token = this.user.getUser().token;
-    this.http.post('http://localhost:4040/api/wtf/save', {
-      token,
-      menu
-    }).subscribe(resp => {
-      console.log(resp);
-    });
+    this.http
+      .post('http://localhost:4040/api/wtf/save', {
+        token,
+        menu
+      })
+      .subscribe(resp => {
+        console.log(resp);
+      });
   }
 }

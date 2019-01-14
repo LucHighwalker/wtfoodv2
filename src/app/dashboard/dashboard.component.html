@@ -2,17 +2,50 @@
   <div *ngSwitchCase="'menus'">
     <h1>Edit Menus:</h1>
 
+    <h2>My Menus:</h2>
     <wtf-menu-box [type]="'placeholder'"></wtf-menu-box>
     <div *ngIf="curUser !== undefined">
-      <wtf-menu-box *ngFor="let menu of curUser.user.menus" [menu]="menu"></wtf-menu-box>
+      <div>
+        <wtf-menu-box
+          *ngFor="let menu of curUser.user.menus"
+          [menu]="menu"
+          (viewPerm)="viewPermissions($event)"
+        ></wtf-menu-box>
+      </div>
+      <div *ngIf="curUser.user.permissions.length > 0">
+        <h2>Other Menus:</h2>
+        <wtf-menu-box
+          *ngFor="let menu of curUser.user.permissions"
+          [menu]="menu"
+        ></wtf-menu-box>
+      </div>
     </div>
   </div>
   <div *ngSwitchCase="'dates'">
-      <h1>Edit Dates:</h1>
+    <h1>Edit Dates:</h1>
 
-      <div *ngIf="curUser !== undefined">
-        <wtf-menu-box *ngFor="let menu of curUser.user.menus" [type]="'dates'" [menu]="menu"></wtf-menu-box>
-      </div>
+    <div *ngIf="curUser !== undefined">
+      <wtf-menu-box
+        *ngFor="let menu of curUser.user.menus"
+        [type]="'dates'"
+        [menu]="menu"
+      ></wtf-menu-box>
+    </div>
   </div>
   <div *ngSwitchDefault>output2</div>
+</div>
+
+<div *ngIf="permObj !== null">
+  <div class="permission-bg" (click)="closePermissions()"></div>
+  <div class="permission-box">
+    <h2>{{ permObj.menuName }}</h2>
+    <div class="permissions">
+      <span *ngFor="let permission of permObj.permissions">{{permission.email}}</span>
+    </div>
+
+
+    <span>add</span>
+    <span>remove</span>
+    <span (click)="closePermissions()">close</span>
+  </div>
 </div>

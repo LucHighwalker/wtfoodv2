@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { WtfoodService } from 'src/app/services/wtfood.service';
 
 @Component({
@@ -13,6 +13,9 @@ export class MenuBoxComponent implements OnInit {
   @Input()
   type: string;
 
+  @Output()
+  viewPerm = new EventEmitter();
+
   constructor(private wtf: WtfoodService) {}
 
   ngOnInit() {}
@@ -20,5 +23,9 @@ export class MenuBoxComponent implements OnInit {
   dateChanged(dates: any = null) {
     this.menu.dates = dates.value;
     this.wtf.saveMenu(this.menu);
+  }
+
+  viewPermissions() {
+    this.viewPerm.emit(this.menu._id);
   }
 }
