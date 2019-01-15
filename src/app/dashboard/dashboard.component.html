@@ -40,13 +40,22 @@
   <div class="permission-box">
     <h2>{{ permObj.menuName }}</h2>
     <div class="permissions">
-      <span *ngFor="let permission of permObj.permissions">{{permission.email}}</span>
+      <span *ngFor="let permission of permObj.permissions">{{
+        permission.email
+      }}</span>
     </div>
-
-    <input type="text" [(ngModel)]="permEmail" id="perm-email" placeholder="enter email">
-
-    <span (click)="addPermission()">add</span>
-    <span>remove</span>
-    <span (click)="closePermissions()">close</span>
+    <br />
+    <mat-form-field appearance="legacy" color="accent">
+      <mat-label>Enter Email</mat-label>
+      <input matInput placeholder="example@email.com" [(ngModel)]="permEmail" />
+    </mat-form-field>
+    <br />
+    <button mat-raised-button color="accent" (click)="addPermission()">
+      add
+    </button>
+    <button mat-raised-button color="warn">remove</button>
+    <button mat-raised-button color="primary" (click)="closePermissions()">
+      close
+    </button>
   </div>
 </div>
