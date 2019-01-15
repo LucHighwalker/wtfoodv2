@@ -48,9 +48,7 @@ export class NavbarComponent implements OnInit {
 
     this.activeRoute.queryParams.subscribe(params => {
       const page = params['page'];
-      if (page !== undefined) {
-        this.activePage = page;
-      }
+      this.activePage = page;
     });
   }
 
