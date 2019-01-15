@@ -1,38 +1,47 @@
-<form *ngIf="!loggedIn">
-  <div>
-    <input
-      type="text"
-      name="email"
-      [(ngModel)]="email"
-      type="email"
-      placeholder="email"
-    /><br />
-    <input
-      type="text"
-      name="password"
-      [(ngModel)]="password"
-      type="password"
-      placeholder="password"
-    /><br />
-    <input
-      *ngIf="showSignup"
-      type="text"
-      name="confPassword"
-      [(ngModel)]="confPassword"
-      type="password"
-      placeholder="confirm password"
-    />
-  </div>
-  <br />
+<div *ngIf="!loggedIn">
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="example@email.com" [(ngModel)]="email" />
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        type="password"
+        placeholder="*********"
+        [(ngModel)]="password"
+      />
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="legacy" *ngIf="showSignup">
+      <mat-label>Confirm Password</mat-label>
+      <input
+        matInput
+        type="password"
+        placeholder="*********"
+        [(ngModel)]="confPassword"
+      />
+    </mat-form-field>
+  </p>
 
   <div *ngIf="!showSignup">
-    <button (click)="login()">login</button>
-    <button (click)="toggleSignup()">signup</button>
+    <button mat-flat-button color="primary" (click)="login()">login</button>
+    <button mat-flat-button color="accent" (click)="toggleSignup()">
+      signup
+    </button>
   </div>
   <div *ngIf="showSignup">
-    <button (click)="signup()">signup</button>
-    <button (click)="toggleSignup()">cancel</button>
+    <button mat-flat-button color="primary" (click)="signup()">signup</button>
+    <button mat-flat-button color="accent" (click)="toggleSignup()">
+      cancel
+    </button>
   </div>
-</form>
+</div>
 
-<button *ngIf="loggedIn" (click)="logout()">logout</button>
+<button mat-flat-button color="warn" *ngIf="loggedIn" (click)="logout()">
+  logout
+</button>

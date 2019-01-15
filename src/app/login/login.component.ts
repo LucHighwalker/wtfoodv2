@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'wtf-login',
@@ -20,7 +21,11 @@ export class LoginComponent implements OnInit {
   private curToken: string;
   private curUser: {};
 
-  constructor(private user: UserService, private cookie: CookieService) {}
+  constructor(
+    private router: Router,
+    private user: UserService,
+    private cookie: CookieService
+  ) {}
 
   ngOnInit() {
     this.user.loginMsg.subscribe((msg: { login: string; token: string }) => {
@@ -70,5 +75,6 @@ export class LoginComponent implements OnInit {
     this.cookie.delete('wtf-user-token');
     this.loggedIn = false;
     this.user.updateUser('');
+    this.router.navigateByUrl('/');
   }
 }
