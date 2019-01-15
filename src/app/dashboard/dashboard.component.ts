@@ -34,6 +34,7 @@ export class DashboardComponent implements OnInit {
 
     this.wtf.permissionResponse.subscribe(resp => {
       this.permObj = resp.permObj ? resp.permObj : null;
+      console.log(this.permObj);
     });
 
     this.activeRoute.queryParams.subscribe(params => {
