@@ -1,0 +1,13 @@
+<div
+  class="nav-button animate"
+  [ngClass]="{ active: activePage === page }"
+  [routerLink]="['/dashboard']"
+  [queryParams]="{ page: page }"
+  routerLinkActive="router-link-active"
+>
+  <span>{{ text }}</span>
+  <div
+    class="indicator animate"
+    [ngClass]="{ active: activePage === page }"
+  ></div>
+</div>

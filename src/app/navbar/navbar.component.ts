@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from '../services/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'wtf-navbar',
@@ -15,10 +16,16 @@ export class NavbarComponent implements OnInit {
   public showSignup: boolean;
   public loggedIn: boolean;
 
+  public activePage: string;
+
   private curToken: string;
   private curUser: {};
 
-  constructor(private user: UserService, private cookie: CookieService) {}
+  constructor(
+    private user: UserService,
+    private activeRoute: ActivatedRoute,
+    private cookie: CookieService
+  ) {}
 
   ngOnInit() {
     this.user.loginMsg.subscribe((msg: { login: string; token: string }) => {
@@ -27,7 +34,7 @@ export class NavbarComponent implements OnInit {
     this.user.signupMsg.subscribe((msg: { signup: string; token: string }) => {
       this.createToken(msg.token);
     });
-    this.user.userUpdate.subscribe((user: { user: {}, token: string }) => {
+    this.user.userUpdate.subscribe((user: { user: {}; token: string }) => {
       if (user.user !== null) {
         this.curUser = user;
         this.loggedIn = true;
@@ -38,6 +45,13 @@ export class NavbarComponent implements OnInit {
     });
     this.curToken = this.cookie.get('wtf-user-token');
     this.user.updateUser(this.curToken);
+
+    this.activeRoute.queryParams.subscribe(params => {
+      const page = params['page'];
+      if (page !== undefined) {
+        this.activePage = page;
+      }
+    });
   }
 
   login() {
