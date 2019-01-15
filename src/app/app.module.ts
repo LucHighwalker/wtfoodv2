@@ -59,6 +59,7 @@ import { ItemComponent } from './menu-viewer/item/item.component';
 import { MenuBoxComponent } from './dashboard/menu-box/menu-box.component';
 import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker';
 import { NavButtonComponent } from './navbar/nav-button/nav-button.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { NavButtonComponent } from './navbar/nav-button/nav-button.component';
     CategoryComponent,
     ItemComponent,
     MenuBoxComponent,
-    NavButtonComponent
+    NavButtonComponent,
+    LoginComponent
   ],
   imports: [
     NgxDnDModule,
