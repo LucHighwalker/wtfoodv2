@@ -26,7 +26,7 @@
               [value]="menu.dates"
               (dateChange)="dateChanged($event)"
             />
-            <sat-datepicker #picker [rangeMode]="true"> </sat-datepicker>
+            <sat-datepicker #picker [rangeMode]="true" color="accent"> </sat-datepicker>
             <sat-datepicker-toggle
               matSuffix
               [for]="picker"
@@ -39,10 +39,12 @@
             routerLinkActive="router-link-active"
             >edit</a
           >
+          <br>
           <a
             (click)="viewPermissions()"
             >permissions</a
           >
+          <br>
           <div class="stamp edited">
             <span
               >last edited: {{ menu.updatedAt }} by

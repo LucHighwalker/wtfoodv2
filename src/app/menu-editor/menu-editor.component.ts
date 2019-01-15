@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { WtfoodService } from '../services/wtfood.service';
 
 @Component({
@@ -26,18 +26,25 @@ export class MenuEditorComponent implements OnInit {
     }
   ];
 
+  originalMenu = {
+    menuName: '',
+    body: []
+  };
+
   menu = {
-    menuName: 'New Menu',
+    menuName: '',
     body: []
   };
 
   constructor(
     private activeRoute: ActivatedRoute,
+    private router: Router,
     private wtf: WtfoodService
   ) {}
 
   ngOnInit() {
     this.wtf.menuResponse.subscribe((resp: any) => {
+      this.originalMenu = resp.menu;
       this.menu = resp.menu;
     });
 
@@ -67,5 +74,11 @@ export class MenuEditorComponent implements OnInit {
 
   saveMenu() {
     this.wtf.saveMenu(this.menu);
+  }
+
+  revert() {
+    // Why is this not working?
+    // originalMenu is changing with menu.
+    this.menu = this.originalMenu;
   }
 }

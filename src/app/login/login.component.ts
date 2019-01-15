@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
 
   public activePage: string;
 
-  private curToken: string;
-  private curUser: {};
+  public curToken: string;
+  public curUser: any;
 
   constructor(
     private router: Router,

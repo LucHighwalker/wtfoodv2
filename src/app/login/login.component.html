@@ -29,19 +29,21 @@
   </p>
 
   <div *ngIf="!showSignup">
-    <button mat-flat-button color="primary" (click)="login()">login</button>
-    <button mat-flat-button color="accent" (click)="toggleSignup()">
+    <button mat-raised-button color="primary" (click)="login()">login</button>
+    <button mat-raised-button color="accent" (click)="toggleSignup()">
       signup
     </button>
   </div>
   <div *ngIf="showSignup">
-    <button mat-flat-button color="primary" (click)="signup()">signup</button>
-    <button mat-flat-button color="accent" (click)="toggleSignup()">
+    <button mat-raised-button color="primary" (click)="signup()">signup</button>
+    <button mat-raised-button color="accent" (click)="toggleSignup()">
       cancel
     </button>
   </div>
 </div>
 
-<button mat-flat-button color="warn" *ngIf="loggedIn" (click)="logout()">
-  logout
-</button>
+<div class="user-info" *ngIf="loggedIn">
+  <img class="profile-pic" src="assets/images/profile-placeholder.png" /> <br />
+  <span class="email">{{ curUser.user.email }}</span> <br />
+  <button mat-raised-button color="warn" (click)="logout()">logout</button>
+</div>
