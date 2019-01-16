@@ -45,16 +45,16 @@
       }}</span>
     </div>
     <br />
-    <mat-form-field appearance="legacy" color="accent">
+    <mat-form-field appearance="legacy">
       <mat-label>Enter Email</mat-label>
       <input matInput placeholder="example@email.com" [(ngModel)]="permEmail" />
     </mat-form-field>
     <br />
-    <button mat-raised-button color="accent" (click)="addPermission()">
+    <button mat-raised-button color="primary" (click)="addPermission()">
       add
     </button>
     <button mat-raised-button color="warn">remove</button>
-    <button mat-raised-button color="primary" (click)="closePermissions()">
+    <button mat-raised-button color="accent" (click)="closePermissions()">
       close
     </button>
   </div>

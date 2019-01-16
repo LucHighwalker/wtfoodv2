@@ -71,11 +71,11 @@
   </div>
 
   <!-- <span (click)="saveMenu()">save</span> -->
-  <button mat-raised-button color="accent" (click)="saveMenu()">save</button>
+  <button mat-raised-button color="primary" (click)="saveMenu()">save</button>
   <button mat-raised-button color="warn" (click)="revert()">revert</button>
   <button
     mat-raised-button
-    color="primary"
+    color="accent"
     [routerLink]="['/dashboard']"
     [queryParams]="{ page: 'menus' }"
   >

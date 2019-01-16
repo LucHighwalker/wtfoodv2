@@ -1,12 +1,12 @@
 <div *ngIf="!loggedIn">
   <p>
-    <mat-form-field appearance="legacy">
+    <mat-form-field appearance="legacy" color="accent">
       <mat-label>Email</mat-label>
       <input matInput placeholder="example@email.com" [(ngModel)]="email" />
     </mat-form-field>
   </p>
   <p>
-    <mat-form-field appearance="legacy">
+    <mat-form-field appearance="legacy" color="accent">
       <mat-label>Password</mat-label>
       <input
         matInput
@@ -17,7 +17,7 @@
     </mat-form-field>
   </p>
   <p>
-    <mat-form-field appearance="legacy" *ngIf="showSignup">
+    <mat-form-field appearance="legacy" color="accent" *ngIf="showSignup">
       <mat-label>Confirm Password</mat-label>
       <input
         matInput
@@ -45,5 +45,5 @@
 <div class="user-info" *ngIf="loggedIn">
   <img class="profile-pic" src="assets/images/profile-placeholder.png" /> <br />
   <span class="email">{{ curUser.user.email }}</span> <br />
-  <button mat-raised-button color="warn" (click)="logout()">logout</button>
+  <button mat-raised-button color="primary" (click)="logout()">logout</button>
 </div>
