@@ -1,17 +1,29 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'wtf-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   public title = 'wtFood';
   public mode = new FormControl('side');
 
-  constructor () {
+  public curUrl;
+
+  constructor (private router: Router) {
     this.onResize();
+  }
+
+  ngOnInit() {
+    this.router.events.subscribe((event: any) => {
+      const curUrl = event.url;
+      if (curUrl !== undefined) {
+        this.curUrl = curUrl;
+      }
+    });
   }
 
   @HostListener('window:resize', ['$event'])

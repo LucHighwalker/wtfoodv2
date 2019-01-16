@@ -1,6 +1,14 @@
 <div class="wtf-titlebar">
-  <img src="assets/images/burger.png" (click)="sidenav.toggle()" class="menu-toggle animate">
-  <img src="assets/images/WTFoodLogoSmall.png" class="title-logo">
+  <img
+    src="assets/images/burger.png"
+    (click)="sidenav.toggle()"
+    class="menu-toggle animate"
+  />
+  <img
+    src="assets/images/WTFoodLogoSmall.png"
+    class="title-logo animate"
+    [ngClass]="{ hidden: curUrl === '/' }"
+  />
 </div>
 
 <mat-sidenav-container class="wtf-container">
@@ -8,7 +16,5 @@
     <wtf-navbar></wtf-navbar>
   </mat-sidenav>
 
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
+  <mat-sidenav-content> <router-outlet></router-outlet> </mat-sidenav-content>
 </mat-sidenav-container>
