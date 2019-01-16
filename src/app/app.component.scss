@@ -36,10 +36,10 @@
     width: auto;
     margin: 5px;
     transform: translateX(0%);
+    cursor: pointer;
 
     &.hidden {
       transform: translateX(100%);
-      z-index: 10;
     }
   }
 }
