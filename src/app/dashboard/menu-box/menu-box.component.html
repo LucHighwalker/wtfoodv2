@@ -1,7 +1,7 @@
 <div [ngSwitch]="type">
   <div *ngSwitchCase="'placeholder'">
     <div
-      class="menu-box placeholder col-md-5 col-lg-3"
+      class="menu-box z-depth-1-half placeholder col-md-5 col-lg-3"
       [routerLink]="['/new']"
       routerLinkActive="router-link-active"
     >
@@ -9,7 +9,7 @@
     </div>
   </div>
   <div *ngSwitchDefault>
-    <div class="menu-box col-md-5 col-lg-3">
+    <div class="menu-box z-depth-1-half col-md-5 col-lg-3">
       <a
         [routerLink]="['/view/' + menu._id]"
         routerLinkActive="router-link-active"

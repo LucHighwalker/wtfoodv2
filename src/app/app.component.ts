@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   public title = 'wtFood';
   public mode = new FormControl('side');
+  public mobile = false;
 
   public curUrl;
 
@@ -31,8 +32,10 @@ export class AppComponent implements OnInit {
     const screenWidth = window.innerWidth;
     if (screenWidth < 920) {
       this.mode = new FormControl('over');
+      this.mobile = true;
     } else {
       this.mode = new FormControl('side');
+      this.mobile = false;
     }
   }
 }

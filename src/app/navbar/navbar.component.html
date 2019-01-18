@@ -1,4 +1,4 @@
-<div class="navbar-content">
+<div class="navbar-content" [ngClass]="{ inset: mobile === false }">
   <wtf-login></wtf-login>
 
   <ul *ngIf="loggedIn">

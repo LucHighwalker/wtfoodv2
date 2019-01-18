@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from '../services/user.service';
 import { ActivatedRoute } from '@angular/router';
@@ -9,6 +9,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+
+  @Input()
+  mobile: boolean;
+
   public activePage: string;
 
   public loggedIn = false;

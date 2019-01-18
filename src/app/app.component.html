@@ -14,7 +14,7 @@
 
 <mat-sidenav-container class="wtf-container">
   <mat-sidenav #sidenav [mode]="mode.value" opened>
-    <wtf-navbar></wtf-navbar>
+    <wtf-navbar [mobile]="mobile"></wtf-navbar>
   </mat-sidenav>
 
   <mat-sidenav-content> <router-outlet></router-outlet> </mat-sidenav-content>

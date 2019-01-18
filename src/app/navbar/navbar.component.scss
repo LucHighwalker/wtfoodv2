@@ -1,7 +1,17 @@
 .navbar-content {
+  position: absolute;
+  top: 0;
+  left: 0;
   padding: 20px;
+  padding-top: 70px;
   min-width: 200px;
   background-color: teal;
-  height: 100%;
+  height: 110%;
   overflow: hidden;
+
+  &.inset {
+    box-shadow: inset -4px 0 2px 0 rgba(0, 0, 0, 0.14),
+      inset -1px 0 5px 0 rgba(0, 0, 0, 0.12),
+      inset -2px 0 2px -1px rgba(0, 0, 0, 0.3);
+  }
 }
